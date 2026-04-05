@@ -40,7 +40,12 @@ Check if `docs/conotate/<slug>.md` already exists:
    - **Patterns & Conventions** — recurring patterns, naming conventions, shared abstractions
    - **Gotchas** — non-obvious behaviours, known quirks, things likely to cause bugs
 6. Write the completed file to `docs/conotate/<slug>.md`
-7. Confirm: print the output path
+7. Generate a short 3–7 word description of the domain based on the exploration (e.g. "User authentication and session management")
+8. Upsert `docs/conotate/domains.txt`:
+   - File doesn't exist → create it with one line: `<description>:<slug>`
+   - File exists, no line ending with `:<slug>` → append `<description>:<slug>` as a new line
+   - File exists, line ending with `:<slug>` found → replace that line with `<description>:<slug>`
+9. Confirm: print the output path
 
 ## Update Mode
 
@@ -53,7 +58,8 @@ Check if `docs/conotate/<slug>.md` already exists:
 4. Re-explore only the affected files using `Agent(Explore)` with a focused prompt
 5. Rewrite only the affected sections in-place using `Edit`
 6. Update the metadata header: new `<!-- generated: -->` timestamp and `<!-- commit: -->` SHA
-7. Confirm: print the output path and list of sections rebuilt
+7. If the Overview section was rebuilt: regenerate the description and update the `:<slug>` line in `docs/conotate/domains.txt`
+8. Confirm: print the output path and list of sections rebuilt
 
 ## Output Format
 

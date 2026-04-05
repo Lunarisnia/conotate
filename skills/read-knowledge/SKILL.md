@@ -1,7 +1,7 @@
 ---
 name: read-knowledge
 description: Use when you want to load an existing knowledge generated from explore-domain skill.
-allowed-tools: Glob, Bash(python3 *)
+allowed-tools: Read, Glob, Bash(python3 *)
 ---
 
 # read-knowledge
@@ -18,11 +18,12 @@ Parse the response into one or more domain candidates. Accept comma-separated, "
 
 ## Domain Resolution
 
-1. Glob `docs/conotate/*.md` to list available knowledge files
-2. Derive slugs by stripping the `docs/conotate/` prefix and `.md` suffix from each result
-3. For each candidate, fuzzy-match against slugs (case-insensitive substring match after normalising `/` → `-` in the candidate):
-   - `auth` matches `src-auth` (substring)
-   - `src/auth` → normalised to `src-auth`, matches `src-auth` (exact)
+1. If `docs/conotate/domains.txt` exists: parse each line as `<description>:<slug>` into a list of `(description, slug)` pairs
+2. Glob `docs/conotate/*.md` → derive slugs by stripping prefix and `.md` suffix → add any slug not already in the list as `("", slug)` (backward compatibility for files generated before domains.txt existed)
+3. For each candidate (normalize: lowercase, `/` → `-`):
+   - Match against slug (case-insensitive substring)
+   - Match against description (case-insensitive substring, if non-empty)
+   - e.g. `auth` matches `User authentication and session management:src-auth` via description; `src-auth` matches via slug
 4. **Unambiguous match** (exactly one slug matches) → proceed with that slug
 5. **Ambiguous** (multiple slugs match one candidate) → present a numbered list and ask the user to pick one
 6. **No match** → inform the user and stop:
