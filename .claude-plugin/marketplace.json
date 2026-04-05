@@ -1,0 +1,20 @@
+{
+  "name": "conotate-dev",
+  "description": "Development marketplace for conotate skills plugin",
+  "owner": {
+    "name": "Louna",
+    "email": "rio.swe.workmail@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "conotate",
+      "description": "A toolkit for generating and managing structured knowledge bases of code domains — explore, document, and navigate large codebases with AI-assisted markdown knowledge files",
+      "version": "1.0.0",
+      "source": "./",
+      "author": {
+        "name": "Louna",
+        "email": "rio.swe.workmail@gmail.com"
+      }
+    }
+  ]
+}

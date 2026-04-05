@@ -1,0 +1,21 @@
+{
+  "name": "conotate",
+  "description": "A toolkit for generating and managing structured knowledge bases of code domains — explore, document, and navigate large codebases with AI-assisted markdown knowledge files",
+  "version": "1.0.0",
+  "author": {
+    "name": "Louna",
+    "email": "rio.swe.workmail@gmail.com"
+  },
+  "homepage": "https://github.com/Lunarisnia/conotate",
+  "repository": "https://github.com/Lunarisnia/conotate",
+  "license": "MIT",
+  "keywords": [
+    "knowledge-base",
+    "documentation",
+    "codebase-navigation",
+    "domain-exploration",
+    "skills",
+    "markdown",
+    "developer-tools"
+  ]
+}
