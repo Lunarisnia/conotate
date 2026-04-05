@@ -14,9 +14,10 @@ Ask the user:
 
 > "Which folder or domain do you want to analyze? (e.g. `src/auth`, `packages/ui`)"
 
-Derive the **domain slug** from the path by replacing `/` with `-`:
+Derive the **domain slug** from the path by replacing `/` and ` ` with `-`:
 - `src/auth` → `src-auth`
 - `packages/ui/components` → `packages-ui-components`
+- `animation system` → `animation-system`
 
 Output path: `docs/conotate/<slug>.md`
 
